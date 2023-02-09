@@ -1,0 +1,58 @@
+{
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-center":["custom/tasks"],
+  "modules-right": [
+    "custom/updates",
+    "network",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
+  "battery": {
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "clock": {
+    "format": "{:%a %d %b %H:%M}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n\n<tt><small>{calendar}</small></tt>"
+  },
+  "network": {
+    "format-ethernet": "",
+    "format-wifi": "",
+    "format-linked": "",
+    "format-disconnected": "",
+    "tooltip-format-wifi": "{essid} at {signalStrength}%"
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "{icon} ",
+    "format-muted": "",
+    "format-source-muted": "",
+    "format-icons": {
+      "default": ["", "", ""],
+      "headphone": "",
+      "headset": "",
+      "hands-free": "",
+      "portable": "",
+      "car": "",
+      "phone": ""
+    }
+  },
+  "custom/tasks": {
+    "exec": "~/.config/waybar/scripts/tasks.sh",
+    "exec-if": "which task",
+    "interval": 60
+  },
+  "custom/updates": {
+    "format": " {}",
+    "exec": "~/.config/waybar/scripts/updates-arch-combined.sh",
+    "interval": 7200,
+    "on-click": "alacritty --command paru -Syu --noconfirm",
+    "signal": 8
+  }
+}
