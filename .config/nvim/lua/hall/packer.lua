@@ -23,13 +23,17 @@ return require('packer').startup(function(use)
             requires = { { 'nvim-lua/plenary.nvim' } }
         }
 
-        use({
-            'rose-pine/neovim',
-            as = 'rose-pine',
-            config = function()
-                vim.cmd('colorscheme rose-pine')
-            end
-        })
+        --  use({
+        --      'rose-pine/neovim',
+        --      as = 'rose-pine',
+        --      config = function()
+        --          vim.cmd('colorscheme rose-pine')
+        --      end})
+        --
+        use { "catppuccin/nvim", as = "catppuccin", config = function()
+            vim.cmd('colorscheme catppuccin-mocha')
+        end
+        }
 
         use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
         use('nvim-treesitter/playground')
@@ -61,8 +65,12 @@ return require('packer').startup(function(use)
 
         use("lervag/vimtex")
 
-        use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
-            setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+        use({
+            "iamcco/markdown-preview.nvim",
+            run = "cd app && npm install",
+            setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+            ft = { "markdown" },
+        })
         use("folke/zen-mode.nvim")
         --  use("github/copilot.vim")
         if packer_bootstrap then
